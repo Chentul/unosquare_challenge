@@ -15,6 +15,7 @@ type Props = {
 };
 
 const PokePaperComp = (props: Props) => {
+  const { id, name, sprite } = props;
   return (
     <div>
       <Paper>
@@ -35,13 +36,13 @@ const PokePaperComp = (props: Props) => {
           <TableBody>
             <TableRow>
               <TableCell>
-                {props.id}  
+                {id && id}
               </TableCell>
               <TableCell>
-                {props.name}
+                {name ? name : ''}
               </TableCell>
               <TableCell>
-                <Avatar src={props.sprite} />
+                {sprite && <Avatar src={sprite} />}
               </TableCell>
             </TableRow>
           </TableBody>
