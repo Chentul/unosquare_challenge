@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { pokedexReducer } from './area/pokedex/state/pokedex.reducer.js';
+import AppRoot from './shared/app-root/app-root.component';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(
+  pokedexReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider store={store}>
+    <AppRoot />
+  </Provider>,
+  document.getElementById('root')
+);
